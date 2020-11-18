@@ -69,6 +69,7 @@ return array(
     'Illuminate\\Broadcasting\\' => array($vendorDir . '/illuminate/broadcasting'),
     'Illuminate\\Auth\\' => array($vendorDir . '/illuminate/auth'),
     'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),
+    'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),

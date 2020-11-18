@@ -16,13 +16,32 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+$router->post(
+    'auth/register',
+    [
+        'uses' => 'AuthController@register'
+    ]
+    );
 
-$router->get('blog','blogcontroller@index');
+$router->post(
+    'auth/login',
+    [
+        'uses' => 'AuthController@authenticate'
+    ]
+    );
 
-$router->get('blog/{id}','blogcontroller@getid');
+$router->group(['middleware' => 'jwt.auth'], function () use ($router) {
+    $router->get('users/{id}', 'AuthController@show');
+    $router->put('users/{id}', 'AuthController@update');
+    $router->delete('users/{id}', 'AuthController@delete');
+    $router->get('blog','blogcontroller@index');
 
-$router->post('blog', 'blogcontroller@store');
+    $router->get('blog/{id}','blogcontroller@getid');
 
-$router->put('blog/{id}','blogcontroller@update');
+    $router->post('blog', 'blogcontroller@store');
 
-$router->delete('blog/{id}','blogcontroller@destroy');
+    $router->put('blog/{id}','blogcontroller@update');
+
+    $router->delete('blog/{id}','blogcontroller@destroy');
+    
+});

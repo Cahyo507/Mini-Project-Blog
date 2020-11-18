@@ -111,5 +111,8 @@ $app->router->group([
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
+$app->routeMiddleware([
+    'jwt.auth' => App\Http\Middleware\JwtMiddleware::class,
+]);
 
 return $app;
